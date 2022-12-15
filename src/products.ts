@@ -1,8 +1,9 @@
 import express from "express";
 const router = express.Router();
-
+const obj = {};
 router.get("/home", (req, res) => {
-  res.send("Hello from home");
+  console.log(obj.name.surname);
+  res.send("Hello from home yess");
 });
 
 export default router;
