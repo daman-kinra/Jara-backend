@@ -12,13 +12,14 @@ router.get("/home", async (req, res) => {
   res.json(user);
 });
 router.get("/", async (req, res) => {
-  const project = await await projects
-    .findById("639c09abafbbf3811049e4cc")
-    .populate({
-      path: "_users",
-      match: { age: { $gt: 12 } },
-      select: "age",
-    });
+  const project = await projects.findById("639c09abafbbf3811049e4cc").populate({
+    path: "_users",
+    match: { age: { $gt: 10 } },
+    select: "age",
+    options: {
+      sort: { age: -1 },
+    },
+  });
 
   res.json(project);
 });
