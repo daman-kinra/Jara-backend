@@ -1,6 +1,15 @@
 import { Schema, model } from "mongoose";
 
-const userSchema = new Schema(
+export interface IUser {
+  _id: Schema.Types.ObjectId;
+  name: string;
+  email: string;
+  avatar?: string;
+  displayName: string;
+  password: string;
+}
+
+const userSchema = new Schema<IUser>(
   {
     name: {
       type: String,
@@ -19,6 +28,7 @@ const userSchema = new Schema(
     password: {
       type: String,
       required: true,
+      select: false,
     },
     avatar: {
       type: String,

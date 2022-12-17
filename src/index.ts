@@ -1,18 +1,20 @@
-import express from "express";
+import express, { Application } from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import auth from "./routes/auth";
+
 dotenv.config();
-const app = express();
+
+const app: Application = express();
 
 const PORT = process.env.PORT || 8080;
 
 app.use(express.json());
-app.get("/api", (req, res) => {
-  res.send("-v0.0.1");
-});
+app.use("/api", auth);
 
+mongoose.set("strictQuery", false);
 mongoose
-  .connect(process.env.MONGODB_URL || "")
+  .connect(process.env.MONGODB_URL || "", {})
   .then(() => {
     console.log("****DB CONNECTED****");
   })
