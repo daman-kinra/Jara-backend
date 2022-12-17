@@ -1,29 +1,24 @@
 import { Schema, model } from "mongoose";
 
-const timelneSchema = new Schema(
+const commentsSchema = new Schema(
   {
-    timelineTitle: {
+    message: {
       type: String,
       required: true,
     },
-    projectID: {
+    commentedFor: {
       type: Schema.Types.ObjectId,
-      ref: "projects",
+      ref: "tickets",
       required: true,
     },
     tags: [{ type: Schema.Types.ObjectId, ref: "users" }],
-    creator: {
+    author: {
       type: Schema.Types.ObjectId,
       ref: "users",
-      required: true,
-    },
-    attachments: [{ type: String }],
-    type: {
-      type: String,
       required: true,
     },
   },
   { timestamps: true }
 );
-const Timelines = model("timelines", timelneSchema);
-export default Timelines;
+const Comments = model("comments", commentsSchema);
+export default Comments;

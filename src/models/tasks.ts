@@ -6,8 +6,16 @@ const tasksSchema = new Schema(
       type: String,
       required: true,
     },
-    projectID: { type: Schema.Types.ObjectId, ref: "projects", required: true },
-    creator: { type: Schema.Types.ObjectId, ref: "users", required: true },
+    projectID: {
+      type: Schema.Types.ObjectId,
+      ref: "projects",
+      required: true,
+    },
+    creator: {
+      type: Schema.Types.ObjectId,
+      ref: "users",
+      required: true,
+    },
     attachments: [{ type: String }],
     status: {
       type: String,
