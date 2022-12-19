@@ -2,6 +2,7 @@ import express, { Application } from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import auth from "./routes/auth";
+import cors from "cors";
 
 dotenv.config();
 
@@ -9,6 +10,7 @@ const app: Application = express();
 
 const PORT = process.env.PORT || 8080;
 
+app.use(cors());
 app.use(express.json());
 app.use("/api", auth);
 
